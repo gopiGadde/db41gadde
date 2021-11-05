@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  p `row #{query.rows}`
+  p `col #{query.cols}`
+  - var rows=Number(query.rows)
+  - var cols=Number(query.cols)
+  if !(Number.isInteger(rows)) || !(Number.isInteger(cols))
+    p It doesnt have any value
+  else if row > 6
+    p Row size shouldnt be greater than 6
+  else if col > 6
+    p Column size shouldnt be greater than 6
+  else
+   table#outer
+    - for(let i=0; i<query.rows; i++) { 
+       tr#middle
+         - for(let j=0; j<query.cols; j++) { 
+           td= (i + j) % query.rows
+         - }
+    - }
