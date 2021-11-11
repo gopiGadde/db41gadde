@@ -13,19 +13,19 @@ router.get('/', api_controller.api);
 /// toyota ROUTES /// 
  
 // POST request for creating a toyota.  
-router.post('/tozyota', toyota_controller.toyota_create_post); 
+router.post('/toyota', toyota_controller.toyota_create_post); 
  
 // DELETE request to delete toyota. 
-router.delete('/tozyota/:id', toyota_controller.toyota_delete); 
+router.delete('/toyota/:id', toyota_controller.toyota_delete); 
  
 // PUT request to update toyota. 
-router.put('/tozyota/:id', 
+router.put('/toyota/:id', 
 toyota_controller.toyota_update_put); 
  
 // GET request for one toyota. 
-router.get('/tozyota/:id', toyota_controller.toyota_detail); 
+router.get('/toyota/:id', toyota_controller.toyota_detail); 
  
 // GET request for list of all toyota items. 
-router.get('/tozyota', toyota_controller.toyota_list); 
+router.get('/toyota', toyota_controller.toyota_list); 
  
 module.exports = router; 
