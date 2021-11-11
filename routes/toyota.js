@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('toyota', { title: 'Search Results by Toyota' });
-});
-
+var express = require('express'); 
+const toyota_controlers= require('../controllers/toyota'); 
+var router = express.Router(); 
+ 
+/* GET toyotas */ 
+router.get('/', toyota_controlers.toyota_view_all_Page ); 
 module.exports = router;

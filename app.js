@@ -16,6 +16,7 @@ var toyotaRouter = require('./routes/toyota');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var toyota = require("./models/toyota"); 
+var resourceRouter = require('./routes/resource');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/users', usersRouter);
 app.use('/toyota', toyotaRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+app.use('/resource', resourceRouter);
 
 
 //Get the default connection 
