@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let toyotaid = toShow._id 
+  - let color = toShow.color 
+  - let quality = toShow.quality 
+  - let cost = toShow.cost 
+  div 
+    div.row 
+      div(class='toyotaAttr mr-3') toyota ID is: 
+      div #{toyotaid} 
+    div.row 
+      div(class='toyotaAttr mr-3') toyota color is: 
+      div #{color} 
+    div.row 
+      div(class='toyotaAttr mr-3') toyota quality is: 
+      div #{cost} 
+    div.row 
+      div(class='toyotaAttr mr-3') toyota Cost is: 
+      div #{quality} 

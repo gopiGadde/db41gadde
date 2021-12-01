@@ -27,5 +27,16 @@ router.get('/toyota/:id', toyota_controller.toyota_detail);
  
 // GET request for list of all toyota items. 
 router.get('/toyota', toyota_controller.toyota_list); 
+
+/* GET detail toyota page */ 
+router.get('/detail', toyota_controller.toyota_view_one_Page); 
+
+/* GET create toyota page */ 
+router.get('/create',toyota_controller.toyota_create_Page); 
  
+/* GET create update page */ 
+router.get('/update',toyota_controller.toyota_update_Page); 
+
+/* GET create toyota page */ 
+router.get('/delete',toyota_controller.toyota_delete_Page); 
 module.exports = router; 

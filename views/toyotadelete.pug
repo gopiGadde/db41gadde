@@ -1,0 +1,53 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let toyotaid = toShow._id 
+    - let color = toShow.color 
+    - let quality = toShow.quality 
+    - let cost = toShow.cost 
+    - let actionid = "/resource/toyota/" + toyotaid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='toyotaAttr mr-3') toyota ID is: 
+        div #{toyotaid} 
+      div.row 
+        div(class='toyotaAttr mr-3') toyota Type is: 
+        div #{color} 
+      div.row 
+        div(class='toyotaAttr mr-3') toyota Size is: 
+        div #{cost} 
+      div.row 
+        div(class='toyotaAttr mr-3') toyota Cost is: 
+        div #{quality} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the toyota collection 
+      window.location.href='/toyotas' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      // Don't need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/toyotas' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 

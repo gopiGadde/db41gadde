@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let toyotaid = toShow._id 
+  - let color = toShow.color 
+  - let quality = toShow.quality 
+  - let cost = toShow.cost 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{toyotaid} 
+  - let actionid = "/resource/toyota/" + toyotaid 
+  form(id='toyotaForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.toyotaAttr(for='color') toyota type 
+        input#color(type='text', name='color', value= color ) 
+    div.form-group 
+        label.toyotaAttr(for='quality') toyota quality 
+        input#quality(type='text', name='quality', value= cost ) 
+    div.form-group 
+        label.toyotaAttr(for='cost') toyota cost 
+        input#cost(type='number', name='cost', value= quality ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['toyotaForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
